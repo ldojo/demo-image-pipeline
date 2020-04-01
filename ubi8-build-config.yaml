@@ -1,0 +1,31 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: citi-ubi8-minimal
+spec:
+  source:
+    git:
+      uri: ssh://git@gitlab.consulting.redhat.com:2222/citigroup-openshift/security/image-pipelines.git
+    sourceSecret:
+      name: local-crc-secret
+  # triggers: 
+  #   - type: ImageChange
+  strategy: 
+    dockerStrategy:
+      dockerfilePath: ubi8-minimal.Dockerfile
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: citi-ubi8-minimal-pipeline
+spec:
+  source:
+    git:
+      uri: ssh://git@gitlab.consulting.redhat.com:2222/citigroup-openshift/security/image-pipelines.git
+    sourceSecret:
+      name: local-crc-secret
+  triggers: 
+    - type: ImageChange
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: ubi8-minimal.Jenkinsfile
