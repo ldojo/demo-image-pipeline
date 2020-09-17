@@ -4,11 +4,30 @@ pipeline{
       defaultValue: 'operators',
       description: 'The name of the project in Grafeas in which to push the CVE results to.',
       name: 'project',
-      trim: true)
+      trim: true
+    )
     string(
       name: 'image',
       description: 'Container image to scan.',
-      trim: true)
+      trim: true
+    )
+    string(
+      name: 'clair',
+      description: 'URL of the Clair instance to use for image scanning',
+      trim: true,
+      defaultValue: 'http://clairsvc:6060'
+    )
+    string(
+      name: 'grafeas',
+      description: 'Hostname and port of the Grafeas instance',
+      trim: true,
+      defaultValue: 'grafeas:8080'
+    )
+    string(
+      name: 'operatorCatalogHost',
+      description: 'Location of the Operator Catalog API service',
+      trim: true,
+      defaultValue: 'http://operator-pipeline-api:8080'
     )
   }
 
@@ -42,8 +61,7 @@ spec:
     stage('clair-scan') {
       steps {
         container('push-clair2grafeas') {
-          sh "entrypoint ${params.project} ${params.image} http://clairsvc.default.svc.cluster.local:6060 " +
-              "grafeas.default.svc.cluster.local:8080"
+          sh "entrypoint ${params.project} ${params.image} ${params.clair} ${params.grafeas} ${params.operatorCatalogHost}"
         }
       }
     }
