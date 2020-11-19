@@ -14,8 +14,8 @@ pipeline{
       spec:
         containers:
         - name: busybox
-          image: docker.io/lshulman/push-clair2grafeas:latest
-#          image: httpd
+#          image: docker.io/lshulman/push-clair2grafeas:latest
+          image: registry.redhat.io/rhel8/python-38
           command:
           - cat
           tty: true
