@@ -1,0 +1,11 @@
+grafeas/
+googleapis/
+*.json
+*.pyc
+arguments
+com.redhat.rhsa-RHEL8.ds.xml
+output.xml
+output2.xml
+.vscode/
+venv/
+*.html

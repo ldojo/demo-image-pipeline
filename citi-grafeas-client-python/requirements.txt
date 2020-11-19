@@ -1,0 +1,8 @@
+grpcio-tools
+grpcio
+pylint
+pylint-protobuf
+claircli
+requests
+responses # library for mocking responses from the requests library
+google-api-python-client # required by protobuf
