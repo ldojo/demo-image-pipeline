@@ -15,7 +15,7 @@ pipeline{
         containers:
         - name: busybox
 #          image: docker.io/lshulman/push-clair2grafeas:latest
-          image: busybox
+          image: httpd
           command:
           - cat
           tty: true
