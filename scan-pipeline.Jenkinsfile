@@ -46,8 +46,10 @@ spec:
     - name: jnlp
       image: registry.redhat.io/openshift4/ose-jenkins-agent-base:latest
       args: ["$(JENKINS_SECRET)", "$(JENKINS_NAME)"]
+      workingDir: '/home/jenkins/agent'
     - name: push-clair2grafeas
       image: quay.io/kjanania/push-clair2grafeas:latest
+      workingDir: '/home/jenkins/agent'
       command:
         - cat
       tty: true
