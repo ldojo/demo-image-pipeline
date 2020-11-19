@@ -61,7 +61,8 @@ spec:
     stage('clair-scan') {
       steps {
         container('push-clair2grafeas') {
-          sh "entrypoint ${params.project} ${params.image} ${params.clair} ${params.grafeas} ${params.operatorCatalogHost}"
+          sh "echo test"
+//          sh "entrypoint ${params.project} ${params.image} ${params.clair} ${params.grafeas} ${params.operatorCatalogHost}"
         }
       }
     }
