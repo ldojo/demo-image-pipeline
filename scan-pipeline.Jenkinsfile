@@ -14,7 +14,7 @@ pipeline{
       spec:
         containers:
         - name: busybox
-          image: quay.io/kjanania/push-clair2grafeas:latest
+          image: docker.io/lshulman/push-clair2grafeas:latest
           command:
           - cat
           tty: true
