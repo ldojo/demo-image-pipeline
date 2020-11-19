@@ -14,7 +14,8 @@ pipeline{
       spec:
         containers:
         - name: busybox
-          image: docker.io/lshulman/push-clair2grafeas:latest
+#          image: docker.io/lshulman/push-clair2grafeas:latest
+          image: busybox
           command:
           - cat
           tty: true
@@ -26,7 +27,7 @@ pipeline{
     stage('clair-scan') {
       steps {
         container('busybox') {
-          sh "echo test"
+          sh "ls /home/; whoami"
         }
       }
     }
