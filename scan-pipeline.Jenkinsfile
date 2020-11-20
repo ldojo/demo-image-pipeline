@@ -48,7 +48,7 @@ spec:
       args: ["$(JENKINS_SECRET)", "$(JENKINS_NAME)"]
       workingDir: '/home/jenkins/agent'
     - name: push-clair2grafeas
-      image: quay.io/kjanania/push-clair2grafeas:latest
+      image: docker.io/lshulman/push-clair2grafeas:latest 
       workingDir: '/home/jenkins/agent'
       command:
         - cat
@@ -63,8 +63,8 @@ spec:
     stage('clair-scan') {
       steps {
         container('push-clair2grafeas') {
-          sh "echo test"
-//          sh "entrypoint ${params.project} ${params.image} ${params.clair} ${params.grafeas} ${params.operatorCatalogHost}"
+//          sh "echo test"
+          sh "entrypoint ${params.project} ${params.image} ${params.clair} ${params.grafeas} ${params.operatorCatalogHost}"
         }
       }
     }
